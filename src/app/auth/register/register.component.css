@@ -1,0 +1,95 @@
+/* Full-page background */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;                     /* fills viewport */
+    background: linear-gradient(135deg, #4a90e2, #9013fe);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+  }
+  
+  /* Centered card */
+  .auth-card {
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    width: 300px;                      /* compact width */
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  /* Title */
+  .form-title {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Register form */
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;                         /* ✅ space between each entry */
+  }
+  
+  /* Inputs and dropdown */
+  .form-group {
+    margin: 0;
+  }
+  
+  .form-control {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;                   /* slightly taller inputs */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+  }
+  
+  select.form-control {
+    height: 2.4rem;                    /* matches input height */
+  }
+  
+  /* Register button */
+  .btn-primary {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    background-color: #4a90e2;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: #357ab8;
+  }
+  
+  /* Login link below */
+  .login-link {
+    margin-top: 1rem;                  /* ✅ space below Register button */
+  }
+  
+  .login-link p {
+    margin-bottom: 0.3rem;
+    color: #555;
+  }
+  
+  .btn-outline-primary {
+    border: 1px solid #4a90e2;
+    color: #4a90e2;
+    background: transparent;
+    padding: 0.3rem 0.6rem;            /* compact */
+    border-radius: 6px;
+    width: auto;
+    display: inline-block;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #4a90e2;
+    color: #fff;
+  }
+  

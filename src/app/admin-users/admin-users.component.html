@@ -1,0 +1,26 @@
+<div class="manage-users-container">
+  <h2 class="manage-users-title">Manage Users</h2>
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button class="action-btn btn-admin" (click)="changeRole(user.userId, 'Admin')">Make Admin</button>
+          <button class="action-btn btn-student" (click)="changeRole(user.userId, 'Student')">Make Student</button>
+          <button class="action-btn btn-delete" (click)="deleteUser(user.userId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

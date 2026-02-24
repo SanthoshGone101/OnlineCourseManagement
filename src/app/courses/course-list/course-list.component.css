@@ -1,0 +1,98 @@
+/* Full page background */
+.my-courses-page {
+    background: linear-gradient(to right, #cce7ff, #f9fcff); /* light blue gradient */
+    min-height: 100vh;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+  }
+  
+  /* Page title */
+  .page-title {
+    color: #0d6efd;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #0d6efd;
+    padding-bottom: 6px;
+  }
+  
+  /* Table header */
+  .table thead {
+    background-color: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  /* Table hover effect */
+  .table-hover tbody tr:hover {
+    background-color: #e6f2ff;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Buttons */
+  .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+    transition: all 0.2s ease-in-out;
+  }
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-secondary {
+    background-color: #0d6efd;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+  }
+  .btn-secondary:hover {
+    background-color: #0b5ed7;
+  }
+  
+  /* Images */
+  .img-thumbnail {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+/* Center the table container */
+.card {
+    margin: 0 auto;              /* centers horizontally */
+    max-width: 90%;              /* keeps it wide but not edge-to-edge */
+  }
+  
+  /* Increase row and column spacing */
+  .table td, .table th {
+    padding: 1rem 1.2rem;        /* more vertical + horizontal spacing */
+  }
+  
+  /* Add row separation for clarity */
+  .table tbody tr {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* Optional: make table look airy */
+  .table {
+    border-collapse: separate;
+    border-spacing: 0 10px;      /* extra space between rows */
+  }
+  
+  /* Center text in header for balance */
+  .table thead th {
+    text-align: center;
+  }
+    /* Table header with light blue background */
+.table thead {
+    background-color: #cce7ff;   /* light blue */
+    color: #003366;              /* dark blue text for contrast */
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  /* Optional: add subtle border under header */
+  .table thead th {
+    border-bottom: 2px solid #99ccff;
+    text-align: center;
+  }
+  

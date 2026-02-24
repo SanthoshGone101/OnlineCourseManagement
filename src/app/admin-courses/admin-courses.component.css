@@ -1,0 +1,98 @@
+.manage-courses-container {
+    padding: 2rem;
+    background: #f4f6f9;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .manage-courses-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #4a90e2;
+    text-align: center;
+  }
+  
+  .courses-content {
+    display: flex;
+    gap: 2rem;        /* spacing between form and table */
+    width: 80%;       /* keeps content centered */
+    margin: 0 auto;   /* ✅ ensures it starts from top but stays centered */
+  }
+  
+  .course-form, .course-table {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+  }
+  
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .form-label i {
+    margin-right: 6px;
+    color: #4a90e2; /* ✅ icons match theme */
+  }
+  
+  .form-control {
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: all 0.2s ease;
+  }
+  
+  .form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 6px rgba(74,144,226,0.3);
+  }
+  
+  .btn-primary {
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  .btn-primary:hover {
+    background-color: #357ab8;
+  }
+  
+  .btn-secondary {
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  
+  .courses-table thead {
+    background: #4a90e2;
+    color: #fff;
+  }
+  
+  .btn-edit {
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  
+  .btn-edit:hover { background-color: #357ab8; }
+  
+  .btn-delete {
+    background-color: #e53935;
+    color: #fff;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  
+  .btn-delete:hover { background-color: #b71c1c; }
+  

@@ -1,0 +1,52 @@
+<div class="admin-container">
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <h1 class="brand">Online Course App</h1>
+    <div class="nav-right">
+      <span>Welcome, {{ user?.email }}</span>
+      <button (click)="logout()" class="btn btn-primary">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="main-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <!-- Admin Links -->
+        <li *ngIf="isAdmin">
+          <a routerLink="/admin/dashboard">Admin Dashboard</a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a routerLink="/admin/users">Manage Users</a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a routerLink="/admin/courses">Manage Courses</a>
+        </li>
+
+        <!-- Student Links -->
+        <li *ngIf="isStudent">
+          <a routerLink="/my-courses">My Courses</a>
+        </li>
+        <li *ngIf="isStudent">
+          <a routerLink="/courses">Available Courses</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <section class="content">
+      <div class="card">
+        <h2>User Profile</h2>
+        <p><strong>Email:</strong> {{ user?.email }}</p>
+        <p><strong>Role:</strong> {{ user?.role }}</p>
+      </div>
+
+      <div class="card debug-box">
+        <p>Debug Role: {{ user?.role }}</p>
+        <p>isAdmin: {{ isAdmin }}</p>
+        <p>isStudent: {{ isStudent }}</p>
+      </div>
+    </section>
+  </div>
+</div>

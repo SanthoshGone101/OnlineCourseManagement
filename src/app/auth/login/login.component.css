@@ -1,0 +1,35 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;          /* tighter spacing */
+  }
+  
+  .form-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #4a90e2;
+  }
+  
+  .form-control {
+    padding: 0.4rem;      /* smaller input height */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .btn {
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;          /* keep login button full width */
+  }
+  
+  .btn-primary {
+    background-color: #4a90e2;
+    border: none;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #357ab8;
+  }
+  

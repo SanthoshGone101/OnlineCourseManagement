@@ -1,0 +1,84 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;   /* ✅ removes scroll bar */
+}
+
+/* Full-page gradient background */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;                     /* ✅ exact viewport height */
+  background: linear-gradient(135deg, #4a90e2, #9013fe);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Centered card */
+.auth-card {
+  background: #fff;
+  padding: 1rem;                      /* compact padding */
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  width: 300px;
+  text-align: center;
+  box-sizing: border-box;             /* ✅ prevents overflow */
+  margin: 0 auto;                     /* ✅ centers horizontally */
+}
+
+/* Title */
+.page-title {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Login form spacing */
+.login-box {
+  margin-bottom: 1rem;
+}
+
+/* Register link directly below login */
+.register-link {
+  margin-top: 0.5rem;
+}
+
+.register-link p {
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #4a90e2;
+  border: none;
+  color: #fff;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #357ab8;
+}
+
+.btn-outline-primary {
+  border: 1px solid #4a90e2;
+  color: #4a90e2;
+  background: transparent;
+  padding: 0.4rem 0.8rem;   /* ✅ smaller padding */
+  border-radius: 6px;
+  width: auto;              /* ✅ compact, not full width */
+  display: inline-block;
+}
+
+.btn-outline-primary:hover {
+  background-color: #4a90e2;
+  color: #fff;
+}

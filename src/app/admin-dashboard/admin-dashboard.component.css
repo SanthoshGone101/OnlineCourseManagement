@@ -1,0 +1,53 @@
+.dashboard-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: #4a90e2;   /* ✅ light blue header */
+    color: #fff;
+    padding: 0.6rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* subtle shadow */
+  }
+  
+  .stats-strip {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+  }
+  
+  .stat-card {
+    flex: 1;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .stat-card h3 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-card p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Accent borders for categories */
+  .stat-card.users { border-top: 4px solid #4a90e2; }
+  .stat-card.students { border-top: 4px solid #28a745; }
+  .stat-card.admins { border-top: 4px solid #9013fe; }
+  .stat-card.courses { border-top: 4px solid #ff9800; }
+  .stat-card.enrollments { border-top: 4px solid #00bcd4; }
+  

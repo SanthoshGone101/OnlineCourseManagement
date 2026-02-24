@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .navbar-left a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .navbar-right button {
+    padding: 5px 10px;
+  }
+  

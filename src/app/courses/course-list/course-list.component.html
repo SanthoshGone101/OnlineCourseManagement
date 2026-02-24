@@ -1,0 +1,43 @@
+<div class="container-fluid py-4 my-courses-page">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="page-title">My Courses</h2>
+    <button class="btn btn-secondary" [routerLink]="['/courses']">
+      Go to Available Courses
+    </button>
+    <button class="btn btn-primary" [routerLink]="['/user-profile']"> User Profile </button>
+  </div>
+
+  <div class="card shadow-lg rounded">
+    <div class="card-body p-0">
+      <table class="table table-striped table-hover table-bordered align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <td class="fw-semibold">{{ course.title }}</td>
+            <td>{{ course.description }}</td>
+            <td class="text-center">
+              <img [src]="course.mediaPath" alt="Course Image"
+                   class="img-thumbnail" style="max-width: 100px;"
+                   *ngIf="course.mediaPath; else noImage">
+              <ng-template #noImage>
+                <span class="text-muted fst-italic">No image</span>
+              </ng-template>
+            </td>
+            <td class="text-center">
+              <button class="btn btn-sm btn-outline-danger" (click)="unenroll(course.courseId)">
+                Unenroll
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

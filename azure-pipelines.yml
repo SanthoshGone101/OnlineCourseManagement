@@ -1,8 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
 - main
 
@@ -10,29 +5,31 @@ pool:
   name: AzureVMpool
 
 steps:
+# Install Node.js
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
+
+# Build frontend
 - script: |
     npm install
-    npm run build
+    npm run build -- --output-path=dist/online-course-app
   displayName: 'Build frontend'
 
+# Debug: confirm dist folder exists
+- powershell: |
+    Write-Host "Listing dist folder contents..."
+    Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist"
+  displayName: 'Debug dist folder'
+
+# Upload build output to Azure Storage
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'OCM-Connection'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      # Debug: confirm dist folder exists
-      Write-Host "Listing dist folder contents..."
-      Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist"
-
-      # Upload Angular build output
       az storage blob upload-batch `
         --account-name ocmstoragefrontend `
         -d '$web' `
         -s "$(System.DefaultWorkingDirectory)/dist/online-course-app"
-
-
-

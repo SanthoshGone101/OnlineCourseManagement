@@ -10,11 +10,15 @@ steps:
   inputs:
     versionSpec: '18.x'
 
-# Build Angular app from repo root
+# Install Angular CLI globally
 - script: |
-    cd $(System.DefaultWorkingDirectory)
+    npm install -g @angular/cli
+  displayName: 'Install Angular CLI'
+
+# Build Angular app (explicit ng build)
+- script: |
     npm install
-    npm run build -- --output-path=dist/online-course-app
+    ng build --output-path=$(System.DefaultWorkingDirectory)/dist/online-course-app
   displayName: 'Build Angular frontend'
 
 # Debug: confirm dist folder exists

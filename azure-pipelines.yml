@@ -16,12 +16,12 @@ steps:
     npm install -g @angular/cli
   displayName: 'Install Angular CLI'
 
-# Build Angular app explicitly
+# Build Angular app explicitly with verbose logs
 - script: |
     cd $(System.DefaultWorkingDirectory)
     npm install
-    ng build --configuration production
-  displayName: 'Build Angular frontend'
+    npx ng build --configuration production --verbose
+  displayName: 'Verbose Angular build'
 
 # Debug: show working directory
 - powershell: |

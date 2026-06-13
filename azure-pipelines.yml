@@ -21,11 +21,11 @@ steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'OCM-Connection'
-    scriptType: 'bash'
+    scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az storage blob upload-batch \
-        --account-name mystorageacct \
+        --account-name ocmstoragefrontend \
         -d '$web' \
         -s dist
 

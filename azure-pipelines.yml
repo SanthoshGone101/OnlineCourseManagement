@@ -24,14 +24,15 @@ steps:
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      # Debug: list files so we know the dist folder exists
+      # Debug: confirm dist folder exists
       Write-Host "Listing dist folder contents..."
       Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist"
 
-      # Upload build output to $web container
+      # Upload Angular build output
       az storage blob upload-batch `
         --account-name ocmstoragefrontend `
         -d '$web' `
         -s "$(System.DefaultWorkingDirectory)/dist/online-course-app"
+
 
 

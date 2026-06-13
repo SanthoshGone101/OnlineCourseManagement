@@ -11,10 +11,15 @@ steps:
     version: '20.x'
   displayName: 'Install Node.js'
 
-# Build Angular app explicitly with npx
+# Install dependencies
 - script: |
     cd $(System.DefaultWorkingDirectory)
-    npm ci   # faster, clean install
+    npm ci
+  displayName: 'Install dependencies'
+
+# Run Angular build explicitly
+- script: |
+    cd $(System.DefaultWorkingDirectory)
     npx ng build --configuration production --verbose
   displayName: 'Run Angular build (verbose)'
 
@@ -48,3 +53,4 @@ steps:
         -d '$web' `
         -s "$(System.DefaultWorkingDirectory)/dist/online-course-app"
   displayName: 'Upload to Azure Storage'
+

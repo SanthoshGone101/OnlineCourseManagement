@@ -5,10 +5,10 @@ pool:
   name: AzureVMpool
 
 steps:
-# Install Node.js
-- task: NodeTool@0
+# Install Node.js (use supported task)
+- task: UseNode@1
   inputs:
-    versionSpec: '18.x'
+    version: '18.x'
   displayName: 'Install Node.js'
 
 # Install Angular CLI globally
@@ -16,7 +16,7 @@ steps:
     npm install -g @angular/cli
   displayName: 'Install Angular CLI'
 
-# Build Angular app (same as local)
+# Build Angular app from repo root
 - script: |
     cd $(System.DefaultWorkingDirectory)
     npm install

@@ -11,15 +11,10 @@ steps:
     version: '20.x'
   displayName: 'Install Node.js'
 
-# Install Angular CLI globally
-- script: |
-    npm install -g @angular/cli
-  displayName: 'Install Angular CLI'
-
-# Build Angular app explicitly with verbose logs
+# Build Angular app explicitly with npx
 - script: |
     cd $(System.DefaultWorkingDirectory)
-    npm install
+    npm ci   # faster, clean install
     npx ng build --configuration production --verbose
   displayName: 'Run Angular build (verbose)'
 

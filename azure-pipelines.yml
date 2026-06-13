@@ -27,5 +27,5 @@ steps:
       az storage blob upload-batch `
         --account-name ocmstoragefrontend `
         -d '$web' `
-        -s dist
+        -s dist/online-course-app
 

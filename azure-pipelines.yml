@@ -21,7 +21,7 @@ steps:
     cd $(System.DefaultWorkingDirectory)
     npm install
     npx ng build --configuration production --verbose
-  displayName: 'Verbose Angular build'
+  displayName: 'Run Angular build (verbose)'
 
 # Debug: show working directory
 - powershell: |

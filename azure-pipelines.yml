@@ -5,10 +5,10 @@ pool:
   name: AzureVMpool
 
 steps:
-# Install Node.js (use supported task)
+# Install Node.js (supported task, no deprecation warning)
 - task: UseNode@1
   inputs:
-    version: '18.x'
+    version: '20.x'   # Angular 17+ requires Node >=20
   displayName: 'Install Node.js'
 
 # Install Angular CLI globally
@@ -16,11 +16,11 @@ steps:
     npm install -g @angular/cli
   displayName: 'Install Angular CLI'
 
-# Build Angular app (from repo root)
+# Build Angular app (explicit ng build)
 - script: |
     cd $(System.DefaultWorkingDirectory)
     npm install
-    npm run build
+    ng build --configuration production
   displayName: 'Build Angular frontend'
 
 # Debug: show working directory

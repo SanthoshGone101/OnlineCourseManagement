@@ -16,18 +16,30 @@ steps:
     npm install -g @angular/cli
   displayName: 'Install Angular CLI'
 
-# Build Angular app from repo root
+# Build Angular app (from repo root)
 - script: |
     cd $(System.DefaultWorkingDirectory)
     npm install
     npm run build
   displayName: 'Build Angular frontend'
 
-# Debug: confirm dist folder exists
+# Debug: show working directory
 - powershell: |
-    Write-Host "Listing dist folder contents..."
+    Write-Host "Current working directory:"
+    Get-Location
+  displayName: 'Show working directory'
+
+# Debug: list repo root contents
+- powershell: |
+    Write-Host "Contents of repo root:"
+    Get-ChildItem "$(System.DefaultWorkingDirectory)"
+  displayName: 'List repo root contents'
+
+# Debug: list dist folder contents
+- powershell: |
+    Write-Host "Contents of dist folder:"
     Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist"
-  displayName: 'Debug dist folder'
+  displayName: 'List dist folder contents'
 
 # Upload build output to Azure Storage
 - task: AzureCLI@2

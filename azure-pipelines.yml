@@ -9,16 +9,12 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '18.x'
+  displayName: 'Install Node.js'
 
-# Install Angular CLI globally
-- script: |
-    npm install -g @angular/cli
-  displayName: 'Install Angular CLI'
-
-# Build Angular app (explicit ng build)
+# Build Angular app
 - script: |
     npm install
-    ng build --output-path=$(System.DefaultWorkingDirectory)/dist/online-course-app
+    npm run build
   displayName: 'Build Angular frontend'
 
 # Debug: confirm dist folder exists
@@ -38,3 +34,4 @@ steps:
         --account-name ocmstoragefrontend `
         -d '$web' `
         -s "$(System.DefaultWorkingDirectory)/dist/online-course-app"
+  displayName: 'Upload to Azure Storage'

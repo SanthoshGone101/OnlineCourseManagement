@@ -20,7 +20,7 @@ steps:
 
 - task: AzureCLI@2
   inputs:
-    azureSubscription: 'MyServiceConnection'
+    azureSubscription: 'OCM-Connection'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |

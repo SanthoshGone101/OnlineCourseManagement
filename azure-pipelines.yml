@@ -10,10 +10,10 @@ steps:
   inputs:
     versionSpec: '18.x'
 
-# Build frontend
+# Build frontend (force output path)
 - script: |
     npm install
-    npm run build -- --output-path=dist/online-course-app
+    npm run build -- --output-path=$(System.DefaultWorkingDirectory)/dist/online-course-app
   displayName: 'Build frontend'
 
 # Debug: confirm dist folder exists

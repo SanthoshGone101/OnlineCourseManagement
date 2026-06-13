@@ -11,7 +11,12 @@ steps:
     versionSpec: '18.x'
   displayName: 'Install Node.js'
 
-# Build Angular app (use package.json script)
+# Install Angular CLI globally
+- script: |
+    npm install -g @angular/cli
+  displayName: 'Install Angular CLI'
+
+# Build Angular app (same as local)
 - script: |
     cd $(System.DefaultWorkingDirectory)
     npm install

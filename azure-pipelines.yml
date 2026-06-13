@@ -24,8 +24,8 @@ steps:
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az storage blob upload-batch \
-        --account-name ocmstoragefrontend \
-        -d '$web' \
+      az storage blob upload-batch `
+        --account-name ocmstoragefrontend `
+        -d '$web' `
         -s dist
 

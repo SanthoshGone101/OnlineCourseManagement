@@ -61,10 +61,11 @@ steps:
       az storage blob upload-batch `
         --account-name ocmstoragefrontend `
         -d '$web' `
-        -s "$(System.DefaultWorkingDirectory)/dist/online-course-app" `
+        -s "$(System.DefaultWorkingDirectory)/dist/online-course-app/browser" `
         --overwrite true
       Write-Host "Upload complete."
   displayName: 'Upload to Azure Storage'
+
 
 # Debug: list contents of $web container after upload
 - task: AzureCLI@2

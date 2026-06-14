@@ -2,49 +2,57 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../Environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://localhost:7228/api';
+  private baseUrl = environment.apiUrl;
+  private userUrl = `${this.baseUrl}/User`;
+  private courseUrl = `${this.baseUrl}/Course`;
+  private enrollmentUrl = `${this.baseUrl}/Enrollment`;
 
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
+  // Authentication
   login(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/User/login`, data);
+    return this.http.post(`${this.userUrl}/login`, data);
   }
 
   register(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/User/register`, data);
+    return this.http.post(`${this.userUrl}/register`, data);
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);  // clear JWT and redirect
+  }
+
+  // Profile
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.userUrl}/profile`);
+  }
+
+  // Courses
   getCourses(page: number = 1, pageSize: number = 10, search: string = '') {
-    let url = `https://localhost:7228/api/Course/list?page=${page}&pageSize=${pageSize}`;
+    let url = `${this.courseUrl}/list?page=${page}&pageSize=${pageSize}`;
     if (search) {
       url += `&search=${search}`;
     }
     return this.http.get<any>(url);
   }
-  logout() {
-    localStorage.removeItem('token'); 
-    this.router.navigate(['/']);  // clear JWT
-    // optionally clear other user data
-  }
-  
 
-  getProfile(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/User/profile`);
+  // Enrollment
+  getEnrollmentDashboard(): Observable<any> {
+    return this.http.get<any>(`${this.enrollmentUrl}/dashboard`);
   }
-  getEnrollmentDashboard() {
-    return this.http.get<any>('https://localhost:7228/api/Enrollment/dashboard');
-  }
-  
+
   enrollCourse(userId: number, courseId: number, userName: string, courseTitle: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
     return this.http.post<any>(
-      'https://localhost:7228/api/Enrollment/enroll',
+      `${this.enrollmentUrl}/enroll`,
       {
         enrollmentId: 0,          // backend will generate
         userId: userId,
@@ -56,10 +64,4 @@ export class ApiService {
       { headers }
     );
   }
-  
-  
-  
-  
-  
 }
-

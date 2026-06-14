@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../Environments/environment';
+
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
-  private baseUrl = 'https://localhost:7228/api/Admin';
+  private baseUrl = `${environment.apiUrl}/Admin`;
+  private enrollmentUrl = `${environment.apiUrl}/Enrollment`;
+  private courseUrl = `${environment.apiUrl}/Course`;
 
   constructor(private http: HttpClient) {}
 
@@ -18,89 +22,67 @@ export class AdminService {
     return this.http.get<any>(`${this.baseUrl}/users`);
   }
 
- 
-
   updateUserRole(id: number, role: string): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json'   // ✅ ensure JSON type
+      'Content-Type': 'application/json'
     };
     return this.http.put<any>(
-      `https://localhost:7228/api/Enrollment/users/${id}/role`,
-      JSON.stringify(role),   // ✅ stringify the string
+      `${this.enrollmentUrl}/users/${id}/role`,
+      JSON.stringify(role),
       { headers }
     );
   }
-  
-  
-  
-  
+
   deleteUser(id: number): Observable<any> {
     const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.delete<any>(
-      `https://localhost:7228/api/Enrollment/users/${id}`,   // ✅ correct endpoint
-      { headers }
-    );
+    return this.http.delete<any>(`${this.enrollmentUrl}/users/${id}`, { headers });
   }
-  
-  
 
   // Course management
   createCourse(course: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/create`, course);
   }
 
- 
-
-
   getEnrollmentUsers(): Observable<any> {
-    const token = localStorage.getItem('token');   // ✅ get JWT
+    const token = localStorage.getItem('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.http.get<any>('https://localhost:7228/api/Enrollment/users', { headers });
+    return this.http.get<any>(`${this.enrollmentUrl}/users`, { headers });
   }
- 
-// Get all courses
-getCourses(): Observable<any[]> {
-  const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
-  return this.http.get<any[]>('https://localhost:7228/api/Course', { headers });
-}
 
-// Get single course by id
-getCourseById(id: number): Observable<any> {
-  const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
-  return this.http.get<any>(`https://localhost:7228/api/Course/${id}`, { headers });
-}
+  // Get all courses
+  getCourses(): Observable<any[]> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<any[]>(`${this.courseUrl}`, { headers });
+  }
 
-// Add new course
-addCourse(course: { title: string; description: string; mediaPath?: string }): Observable<any> {
-  const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
-  return this.http.post<any>('https://localhost:7228/api/Course/create', course, { headers });
-}
+  // Get single course by id
+  getCourseById(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.get<any>(`${this.courseUrl}/${id}`, { headers });
+  }
 
-// Update course
-updateCourse(id: number, course: any): Observable<any> {
-  const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
-  return this.http.put<any>(`https://localhost:7228/api/Course/${id}`, course, { headers });
-}
+  // Add new course
+  addCourse(course: { title: string; description: string; mediaPath?: string }): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.post<any>(`${this.courseUrl}/create`, course, { headers });
+  }
 
-deleteCourse(id: number): Observable<any> {
-  const token = localStorage.getItem('token');
-  const headers = { Authorization: `Bearer ${token}` };
-  return this.http.delete<any>(`https://localhost:7228/api/Course/${id}`, { headers });
-}
+  // Update course
+  updateCourse(id: number, course: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.put<any>(`${this.courseUrl}/${id}`, course, { headers });
+  }
 
-
-  
-  
-  
-  
-  
-  
-  
+  deleteCourse(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.http.delete<any>(`${this.courseUrl}/${id}`, { headers });
+  }
 }

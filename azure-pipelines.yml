@@ -44,6 +44,12 @@ steps:
     Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist"
   displayName: 'List dist folder contents'
 
+# Debug: list dist/online-course-app contents
+- powershell: |
+    Write-Host "Contents of dist/online-course-app folder:"
+    Get-ChildItem -Recurse "$(System.DefaultWorkingDirectory)/dist/online-course-app"
+  displayName: 'List dist/online-course-app contents'
+
 # Upload build output to Azure Storage
 - task: AzureCLI@2
   inputs:
@@ -51,9 +57,25 @@ steps:
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
     inlineScript: |
+      Write-Host "Uploading Angular build to Azure Storage..."
       az storage blob upload-batch `
         --account-name ocmstoragefrontend `
         -d '$web' `
-        -s "$(System.DefaultWorkingDirectory)/dist/online-course-app"
+        -s "$(System.DefaultWorkingDirectory)/dist/online-course-app" `
+        --overwrite true
+      Write-Host "Upload complete."
   displayName: 'Upload to Azure Storage'
 
+# Debug: list contents of $web container after upload
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'OCM-Connection'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      Write-Host "Listing contents of $web container after upload..."
+      az storage blob list `
+        --account-name ocmstoragefrontend `
+        -c '$web' `
+        --output table
+  displayName: 'List $web container contents after upload'
